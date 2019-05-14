@@ -1,21 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+import TodoList from './components/TodoList/TodoList.jsx';
 
 import './App.css';
 
-const mapStateToProps = (state) =>{
-  return{
-    
-  }
-}
+const mapStateToProps = (state => {
+  return state
+})
 
-class App extends React.Component {
-  render(){
-    return(
+class App extends Component {
+  render() {
+    return (
       <div className="App">
-        <header className="App-header">
-        App.jsx
-        </header>
+        <TodoList />
       </div>
     )
   }
