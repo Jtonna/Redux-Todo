@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import TodoList from './components/TodoList/TodoList.jsx';
+import TodoList from './components/todoList';
 
 import './App.css';
 

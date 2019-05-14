@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-import { provider } from 'react-redux';
+import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducer from '../src/reducers/reducers';
+import reducer from './reducer/reducers.jsx';
 
 const store = createStore(reducer)
 ReactDOM.render(
-	<provider store={store}>
+	<Provider store={store}>
 		<App />
-	</provider>,document.getElementById('root')
+	</Provider>,document.getElementById('root')
 );
