@@ -1,4 +1,4 @@
-import { ADD_TASK, TOGGLE_COMPLETED } from '../action/actions.jsx';
+import { ADD_TASK, TOGGLE_COMPLETED, DELETE_COMPLETED, DELETE_ITEM } from '../action/actions.jsx';
 
 const initialState = {
 	todo: [{
@@ -26,10 +26,26 @@ export default (state = initialState, action) => {
 				]
 		}
 		case TOGGLE_COMPLETED:
+		console.log('reducers.jsx says: toggle completed')
 			const NewState = state.todo.map(item => ( item.id === action.payload ) ? { ...item, completed: ! item.completed } : item)
 			return {
 				todo: NewState
 			};
+
+		case DELETE_COMPLETED:
+		console.log('reducers.jsx says: delete completed')
+			const deleteIt = state.todo.filter(item =>(!item.completed))
+			return{
+				todo: deleteIt,
+			}
+
+		case DELETE_ITEM:
+		console.log('reducers.jsx says: delete item')
+		const deleteOne = state.todo.filter(item => item.id !== action.payload)
+		return{
+			todo: deleteOne,
+		}
+
 			default:
 			return state;
 	}

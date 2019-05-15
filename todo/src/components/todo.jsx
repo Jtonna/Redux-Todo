@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleCompletedAction } from '../action/actions';
+import { toggleCompletedAction, deleteItem } from '../action/actions';
+import styled from 'styled-components'
+
 
 const mapStateToProps = state => {
 	return state;
@@ -8,12 +10,20 @@ const mapStateToProps = state => {
 
 const Todo = props => {
 	return(
-		<div className="todo">
-			<div className="listItem" onClick={() => props.toggleCompletedAction(props.item.id)}>
-				<h1> {props.item.name} </h1>
-			</div>	
-		</div>
+		<TodoDiv>
+			<div className='list-item'>
+				<h1 classname={props.item.completed ? 'completed': ''} onClick={() => props.toggleCompletedAction(props.item.id)} > {props.item.name} </h1> 
+				<button onClick={() => props.deleteItem(props.item.id)} > delete </button>
+			</div>
+		</TodoDiv>
 	)
 }
 
-export default connect(mapStateToProps, {toggleCompletedAction})(Todo)
+const listItem = styled.div`
+	.completed {
+		color: red;
+		text-decoration: line-through;
+	}
+`
+
+export default connect(mapStateToProps, {toggleCompletedAction, deleteItem})(Todo)
